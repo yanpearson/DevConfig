@@ -1,6 +1,12 @@
 # DevConfig
 Backup of my configuration files used to configure my  development environment
 
+## Install Vundle
+
+```sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
 ## Clipboard support with tmux on mac os x
 
 [see this topic](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
