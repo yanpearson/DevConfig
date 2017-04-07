@@ -15,7 +15,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 brew install reattach-to-user-namespace
 ```
 
-## Error when commiting from the command line on OS X
+## Error when commiting from the command line on mac os x
 
 [see this topic](https://github.com/VundleVim/Vundle.vim/issues/167)
 
