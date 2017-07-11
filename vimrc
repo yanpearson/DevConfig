@@ -21,16 +21,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'altercation/vim-colors-solarized' 	" Solarized colorscheme
 Plugin 'morhetz/gruvbox'					" Gruvbox colorscheme
-Plugin 'scrooloose/nerdtree'				" Tree explorer
+Plugin 'scrooloose/nerdtree'					" Tree explorer
 Plugin 'tmhedberg/matchit'					" Extended % matching for HTML, LaTeX, and many other languages
 Plugin 'bling/vim-airline'					" Status bar
 Plugin 'ctrlpvim/ctrlp.vim'					" Fuzzy search
 Plugin 'tpope/vim-fugitive'					" Git Wrapper
-Plugin 'tpope/vim-surround'					" Surroundings
 Plugin 'majutsushi/tagbar'					" Tagbar
-Plugin 'sheerun/vim-polyglot'				" Language pack
+Plugin 'sheerun/vim-polyglot'					" Language pack
+Plugin 'ekalinin/Dockerfile.vim'				" Dockerfile
+Plugin 'joonty/vdebug'						" Debugger
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -85,9 +86,6 @@ set noswapfile
 syntax enable
 set background=dark
 
-" Uncomment if terminal emulator’s colorscheme does not used the Solarized palette
-" let g:solarized_termcolors=256
-
 colorscheme gruvbox
 
 if &term =~ '256color'
@@ -113,11 +111,19 @@ nnoremap <leader><space> :%s/\s\+$//<cr>
 " Toggle NERDTree
 nnoremap <leader>t :NERDTreeToggle<cr>
 
+" Toggle Tagbar
+nnoremap <silent> <F12> :TagbarToggle<cr>
+
+" Save buffer (fugitive)
+nnoremap <leader>s :Gwrite<cr>
+
+" Save buffer
+nnoremap <leader>S :w<cr>
+
 " ============
 " NERDTree
 " ============
 autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:NERDTreeDirArrowExpandable='+'
@@ -135,8 +141,3 @@ let g:airline_powerline_fonts=1
 " ctrlp
 " ============
 let g:ctrlp_extensions = ['tag', 'buffertag']
-
-" ============
-" Tagbar
-" ============
-nnoremap <silent> <F9> :TagbarToggle<CR>
