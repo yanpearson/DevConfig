@@ -31,7 +31,7 @@ Plugin 'majutsushi/tagbar'					" Tagbar
 Plugin 'sheerun/vim-polyglot'					" Language pack
 Plugin 'ekalinin/Dockerfile.vim'				" Dockerfile
 Plugin 'joonty/vdebug'						" Debugger
-
+Plugin 'scrooloose/nerdcommenter'				" Code comment
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -112,7 +112,7 @@ nnoremap <leader><space> :%s/\s\+$//<cr>
 nnoremap <leader>t :NERDTreeToggle<cr>
 
 " Toggle Tagbar
-nnoremap <silent> <F12> :TagbarToggle<cr>
+nnoremap <leader>p :TagbarToggle<cr>
 
 " Save buffer (fugitive)
 nnoremap <leader>s :Gwrite<cr>
@@ -126,8 +126,8 @@ nnoremap <leader>S :w<cr>
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:NERDTreeDirArrowExpandable='+'
-let g:NERDTreeDirArrowCollapsible='-'
+let g:NERDTreeDirArrowExpandable='►'
+let g:NERDTreeDirArrowCollapsible='▼'
 
 " Fix issue with NERDTree not working over SSH
 set encoding=utf-8
