@@ -115,10 +115,10 @@ nnoremap <leader>t :NERDTreeToggle<cr>
 nnoremap <leader>p :TagbarToggle<cr>
 
 " Save buffer (fugitive)
-nnoremap <leader>s :Gwrite<cr>
+nnoremap <leader>w :Gwrite<cr>
 
 " Save buffer
-nnoremap <leader>S :w<cr>
+nnoremap <leader>W :w<cr>
 
 " ============
 " NERDTree
