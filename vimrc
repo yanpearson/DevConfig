@@ -21,17 +21,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'morhetz/gruvbox'					" Gruvbox colorscheme
-Plugin 'scrooloose/nerdtree'					" Tree explorer
-Plugin 'tmhedberg/matchit'					" Extended % matching for HTML, LaTeX, and many other languages
-Plugin 'bling/vim-airline'					" Status bar
-Plugin 'ctrlpvim/ctrlp.vim'					" Fuzzy search
-Plugin 'tpope/vim-fugitive'					" Git Wrapper
-Plugin 'majutsushi/tagbar'					" Tagbar
-Plugin 'sheerun/vim-polyglot'					" Language pack
-Plugin 'ekalinin/Dockerfile.vim'				" Dockerfile
-Plugin 'joonty/vdebug'						" Debugger
-Plugin 'scrooloose/nerdcommenter'				" Code comment
+Plugin 'junegunn/seoul256.vim'							" Seoul 256 colorscheme
+Plugin 'junegunn/goyo.vim'                              " Zen mode
+Plugin 'itchyny/lightline.vim'                          " Statusline
+Plugin 'tpope/vim-fugitive'                             " Git Wrapper
+Plugin 'tpope/vim-vinegar'                              " netrw wrapper
+Plugin 'sheerun/vim-polyglot'                           " Language pack
+Plugin 'scrooloose/nerdcommenter'                       " Code comment
+Plugin 'freitass/todo.txt-vim'                          " Todo
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -39,9 +36,6 @@ call vundle#end()
 " ============
 " General
 " ============
-
-" Enable clipboard
-set clipboard=unnamed
 
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
@@ -78,15 +72,19 @@ set undodir=~/.vim/undo//
 " disable swap files creation
 set noswapfile
 
+" relative line number
+set relativenumber
+
 " ============
 " Appearance
 " ============
 
 " Color scheme
 syntax enable
-set background=dark
 
-colorscheme gruvbox
+let g:seoul256_background = 236
+colo seoul256
+set background=dark
 
 if &term =~ '256color'
 	" disable Background Color Erase (BCE) so that color schemes
@@ -108,11 +106,8 @@ nnoremap <leader>h :noh<cr>
 " Remove trailing whitespaces
 nnoremap <leader><space> :%s/\s\+$//<cr>
 
-" Toggle NERDTree
-nnoremap <leader>t :NERDTreeToggle<cr>
-
 " Toggle Tagbar
-nnoremap <leader>p :TagbarToggle<cr>
+nnoremap <leader>e :TagbarToggle<cr>
 
 " Save buffer (fugitive)
 nnoremap <leader>w :Gwrite<cr>
@@ -121,23 +116,10 @@ nnoremap <leader>w :Gwrite<cr>
 nnoremap <leader>W :w<cr>
 
 " ============
-" NERDTree
+" Lightline
 " ============
-autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-let g:NERDTreeDirArrowExpandable='►'
-let g:NERDTreeDirArrowCollapsible='▼'
-
-" Fix issue with NERDTree not working over SSH
-set encoding=utf-8
-
-" ============
-" Airline
-" ============
-let g:airline_powerline_fonts=1
-
-" ============
-" ctrlp
-" ============
-let g:ctrlp_extensions = ['tag', 'buffertag']
+set laststatus=2
+set noshowmode
+let g:lightline = {
+			\ 'colorscheme': 'seoul256',
+			\ }
